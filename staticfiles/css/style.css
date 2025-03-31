@@ -1,0 +1,317 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Riot&display=swap'); /*  font-family: "Protest Riot", sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Protest+Riot&display=swap'); /*  font-family: "Handlee", cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap'); /*"Lilita One", sans-serif*/
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap'); /* "Handlee", cursive;*/
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+  .text-small {
+    font-size: 85%;
+  }
+  .color1{
+    background: #9a52c4;
+  }
+  .titulo{
+    font-family: "Lilita One", sans-serif;
+    color: black;
+    font-size: 3.7rem;
+    text-shadow: 0.2rem 0.3rem 0.2rem rgb(117, 96, 122);
+  }
+  .fondo{
+    background:#af9cd1;
+  }
+  .nav{
+    text-decoration: none;
+    color: white;
+    font-family: "Handlee", cursive;
+    text-align: center;
+  }
+  .navblack{
+    text-decoration: none;
+    color: black;
+    font-family: "Handlee", cursive;
+  }
+
+  .fuenteletra{
+    color: black;
+    font-family: "Handlee", cursive;
+  }
+  /* iniciar sesion */
+  html,
+body {
+  height: 100%;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* registro */
+.container {
+  max-width: 960px;
+}
+
+/* Footer */
+
+.footer{
+  margin: 30px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.footer1Linea{
+  font-family:"Handlee", cursive;
+font-size: 1.2rem;
+margin-bottom: 15px;
+text-shadow: 2px 2px 2px white;
+  font-weight: bolder;
+}
+.footer1 a{
+  background: gainsboro;
+  padding: 6px 10px;
+  text-decoration: none;
+color: black;
+font-weight: bold;
+font-size: 1.3rem;
+font-family:"Handlee", cursive;
+  box-shadow: 3px 3px 3px gray;
+}
+.footer1 a:hover{
+color: #A480F2;
+font-size: 1.5rem;
+  text-shadow: 2px 2px 2px white;
+}
+.footerinfo{
+  text-align:start;  
+  background: #cfc7dd;
+  width: 100%;
+  padding: 5px 5px;
+  margin-top: 50px;
+}
+.informacion{
+  font-weight: bold;
+  font-family:"Handlee", cursive;
+  font-size: 1rem;
+  margin-top: 13px;
+  margin-left: 10px;
+}
+.imgIconos{
+  margin-top: 10px;
+  padding-right: 3px;
+  text-align: center;
+}
+.bold{
+font-weight: bold;
+font-family: "Handlee", cursive;
+}
+.row{
+  flex-direction: row-reverse;
+justify-content: center;
+align-items: flex-end;
+margin-bottom: 50px;
+  }
+.icono-pequeño{
+  height: 2.5rem;
+  width: auto;
+}
+.sinborde{
+  border: none;
+  background: none;
+}
+
+/*=====================================
+estilos de usuario
+=====================================*/
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#B873FF, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+    background-image: linear-gradient(45deg, #b551eb, #c59bc5);
+    border-radius: 0 0 20px 20px;
+
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+    margin-right: 1rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -40px;
+    left: calc(50% - 90px);
+    z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    border: 0;
+    background-color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos {
+    width: 50%;
+    list-style: none;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0;
+}
+
+.seccion-perfil-usuario .lista-datos li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.seccion-perfil-usuario .redes-sociales {
+    position: absolute;
+    right: calc(0px - 50px - 1rem);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* adactacion a dispositivos */
+@media (max-width: 750px) {
+    .seccion-perfil-usuario .lista-datos {
+        width: 100%;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-portada,
+    .seccion-perfil-usuario .perfil-usuario-body {
+        width: 95%;
+    }
+}
+.mensaje a {
+  color: inherit;
+  margin-right: .5rem;
+  display: inline-block;
+}
+.mensaje a:hover {
+  color: #309B76;
+  transform: scale(1.4)
+}
+
+#alerta {
+  margin-top: 10px;
+  text-align: center;
+}
+.sinfondo{
+  background: none;
+}

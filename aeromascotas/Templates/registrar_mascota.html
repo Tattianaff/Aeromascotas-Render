@@ -1,0 +1,347 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Mascota</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="{% static 'js/color-modes.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  </head>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f0ff;
+  }
+  main {
+    flex: 1 0 auto; 
+  }
+  footer {
+    flex-shrink: 0;
+  }
+  .tabla-contenedor {
+  width: 65%;
+  margin: 3rem auto;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+
+}
+
+</style>
+<body>
+  <header>
+    <div class="px-3 py-2 fondo border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <!-- logo del proyecto -->
+            <img src="{% static 'img/logo.png' %}" alt="AeroMascotas" width="auto" height="70">
+            <h1 class="titulo">AeroMascotas</h1>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-tabs">
+
+            <li>
+              <a href="{% url 'index_cliente' %}" class="nav-link text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                  </svg>
+                Home
+              </a>
+            </li>
+            
+            <li>
+              <li class="nav-item dropdown">
+                <a  class="nav-link text-black negrilla" data-bs-toggle="dropdown"  role="button" aria-expanded="false" >
+                  <!-- <svg class="bi d-block mx-auto mb-1" width="24" height="24"><use xlink:href="#grid"/></svg> -->
+                  <!-- icono extraido desde botstrap -->
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16">
+                      <path d="M6 1H1v14h5zm9 0h-5v5h5zm0 9v5h-5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z"/>
+                  </svg>
+                  Servicios
+                </a>
+                  <ul class="dropdown-menu fondo">
+                    <li><a class="dropdown-item negrilla" href="{% url 'ver_solicitudes' %}">Mis Servicios</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'registrar_solicitud_completa' %}">Servicio Completo</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'registrar_solicitud_especifica' %}">Servicio Especifico</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'asesoria' %}">Asesoria</a></li>
+                  </ul>
+              </li>
+            </li>
+
+            <li>
+              <a href="https://wa.me/573195850772" class="nav-link text-black negrilla">
+                <svg xmlns="http://www.w3.org/2000/svg"  class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-info-lg" viewBox="0 0 16 16">
+                  <path d="m9.708 6.075-3.024.379-.108.502.595.108c.387.093.464.232.38.619l-.975 4.577c-.255 1.183.14 1.74 1.067 1.74.72 0 1.554-.332 1.933-.789l.116-.549c-.263.232-.65.325-.905.325-.363 0-.494-.255-.402-.704zm.091-2.755a1.32 1.32 0 1 1-2.64 0 1.32 1.32 0 0 1 2.64 0"/>
+                </svg>
+                Ayuda
+              </a>
+            </li>
+
+            <li>
+              <li class="nav-item dropdown ">
+                <a class="nav-link text-black negrilla" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                  <img class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" viewBox="0 0 16 16" src="{% static 'img/iconomascotas.png'%}" alt="">
+                  Mascotas
+                </a>
+                  <ul class="dropdown-menu fondo">
+                    <li><a class="dropdown-item negrilla" href="{% url 'registrar_mascota' %}">Registrar Mascota</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'ver_mascota' %}">Ver Mascotas</a></li>  
+                  </ul>                                        
+              </li>
+            </li> 
+
+              <li>
+                <li class="nav-item dropdown ">
+                  <a class="nav-link text-black negrilla" data-bs-toggle="dropdown" role="button" aria-expanded="false" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                    </svg>
+                    Cliente
+                  </a>
+                    <ul class="dropdown-menu fondo">
+                      <li><a class="dropdown-item negrilla" href="{% url 'perfil_cliente' %}">Perfil</a></li>
+                      <li><a class="dropdown-item negrilla" href="{% url 'cerrar_sesion' %}">Salir</a></li>
+                    </ul>
+                </li>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="px-3 py-2 border-bottom mb-3">
+      <div class="container d-flex flex-wrap justify-content-center">
+        <form class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="tabla-contenedor fuenteletra">
+      <!-- Título -->
+      <div>
+        <h2 class="fuenteletra mb-2 fw-bold text-center">Registra tu mascota</h2>
+      </div>
+  
+      <div class="row g-5 justify-content-center">
+        <div class="col-md-7 col-lg-8">
+          <form method="post" action="{% url 'registrar_mascota' %}" enctype="multipart/form-data" class="fuenteletra needs-validation" novalidate>
+            {% csrf_token %}
+  
+            <!-- Campo oculto para recargar razas -->
+            <input type="hidden" name="cambiar_especie" value="1">
+  
+            <div class="row g-3">
+              <hr class="featurette-divider">
+  
+              <!-- Nombre -->
+              <div class="col-md-6">
+                <label for="id_nombre" class="form-label">Nombres</label>
+                <input type="text" class="form-control" id="id_nombre" name="nombre"
+                       value="{{ request.POST.nombre }}" placeholder="Nombres"
+                       pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s\-]*" required>
+                <div class="invalid-feedback">Es necesario que escriba un nombre.</div>
+              </div>
+  
+              <!-- Fecha de nacimiento -->
+              <div class="col-md-6">
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"
+                       value="{{ request.POST.fecha_nacimiento }}" required>
+                <div class="invalid-feedback">Seleccione la fecha de nacimiento.</div>
+              </div>
+  
+              <!-- Peso -->
+              <div class="col-md-6">
+                <label for="id_peso" class="form-label">Peso</label>
+                <input type="number" class="form-control" id="id_peso" name="peso"
+                       value="{{ request.POST.peso }}" placeholder="En KG" min="1" max="99999" required>
+                <div class="invalid-feedback">Es necesario que escriba el peso.</div>
+              </div>
+  
+              <!-- Historia médica -->
+              <div class="col-md-6">
+                <label for="id_inf_medica" class="form-label">Descripcion Salud</label>
+                <input type="text" class="form-control" id="id_inf_medica" name="inf_medica"
+                       value="{{ request.POST.inf_medica }}"
+                       pattern="[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s\.,\-]*" placeholder="Ejemplo: Tiene asma..." required>
+                <div class="invalid-feedback">Ingrese la historia clínica veterinaria.</div>
+              </div>
+  
+              <!-- Tamaño -->
+              <div class="col-md-6">
+                <label for="id_tamaño" class="form-label">Tamaño</label>
+                <select class="form-select" id="id_tamaño" name="tamaño" required>
+                  <option value="">Seleccione el Tamaño</option>
+                  <option {% if request.POST.tamaño == "Pequeño" %}selected{% endif %}>Pequeño</option>
+                  <option {% if request.POST.tamaño == "Mediano" %}selected{% endif %}>Mediano</option>
+                  <option {% if request.POST.tamaño == "Grande" %}selected{% endif %}>Grande</option>
+                </select>
+                <div class="invalid-feedback">Es necesario que seleccione el tamaño.</div>
+              </div>
+  
+              <!-- Sexo -->
+              <div class="col-md-6">
+                <label for="id_sexo" class="form-label">Sexo</label>
+                <select class="form-select" id="id_sexo" name="sexo" required>
+                  <option value="">Seleccione el Sexo</option>
+                  <option {% if request.POST.sexo == "Hembra" %}selected{% endif %}>Hembra</option>
+                  <option {% if request.POST.sexo == "Macho" %}selected{% endif %}>Macho</option>
+                </select>
+                <div class="invalid-feedback">Es necesario que seleccione el sexo.</div>
+              </div>
+
+              <!-- Raza -->
+              <div class="col-md-6">
+                <label for="Raza" class="form-label">Raza</label>
+                <select class="form-select" id="Raza" name="raza" required>
+                  <option value="">Seleccione la Raza</option>
+                  {% for raza in razas %}
+                    <option value="{{ raza.id }}" {% if request.POST.raza == raza.id|stringformat:"s" %}selected{% endif %}>
+                      {{ raza.nombre_raza }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <div class="invalid-feedback">Es necesario que seleccione la especie y luego la raza.</div>
+              </div>
+              
+              <!-- Especie -->
+              <div class="col-md-6">
+                <label for="id_especie" class="form-label">Especie</label>
+                <select class="form-select" id="id_especie" name="especie" required onchange="this.form.submit()" required>
+                  <option value="">Seleccione la Especie</option>
+                  {% for especie in especies %}
+                    <option value="{{ especie.id }}" {% if request.POST.especie == especie.id|stringformat:"s" %}selected{% endif %}>
+                      {{ especie.nombre_especie }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <div class="invalid-feedback">Es necesario que seleccione la especie.</div>
+              </div>
+  
+              <!-- Imagen -->
+              <div class="col-md-12">
+                <label for="id_imagen" class="form-label">Foto de la Mascota</label>
+                <input type="file" class="form-control" id="id_imagen" name="imagen" accept="image/*" >
+                <div class="invalid-feedback">Puede subir una foto de su mascota.</div>
+              </div>
+  
+              <!-- ID del cliente -->
+              <input type="hidden" id="id_cliente" name="id_cliente" value="{{ id_cliente }}">
+  
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-bd-primary btn-lg" type="submit" name="registrar">Registrar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="fondo mt-auto py-2" style="margin-top: 3rem;">
+    <div style="width: 90%; margin: 0 auto;">
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-2 border-bottom fw-light">
+        <p class="text-dark nav m-0">&copy; 2025 AeroMascotas</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a href="https://www.instagram.com/aero_mascotas?igsh=YnhvMm1neXVid3hp" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://x.com/Aero_Mascotas?t=YrEF1_AUSHbKZbX6KgOKSA&s=09" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=61556259195231&mibextid=ZbWKwL" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg></a>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div class="row justify-content-md-end align-items-start mt-3">
+        <div class="col-6 col-md-3 mb-2"> 
+          <h5 class="fw-bold text-dark nav fuente-letra">Redes</h5>
+          <ul class="nav flex-column text-start">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-dark"><i class="bi bi-envelope-fill me-2"></i>Aeromascotas@gmail.com</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://www.instagram.com/aero_mascotas" class="nav-link p-0 text-dark"><i class="bi bi-instagram me-2"></i>IG: aero_mascotas</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://x.com/Aero_Mascotas" class="nav-link p-0 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="me-2" viewBox="0 0 16 16" style="vertical-align: middle;">
+                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                </svg>
+                X: Aero_Mascotas
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://www.facebook.com/profile.php?id=61556259195231" class="nav-link p-0 text-dark"><i class="bi bi-facebook me-2"></i>F: Aero Mascotas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </footer>
+  <script>
+    // 🔒 Bloquear retroceso en el historial
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, "", window.location.href);
+        window.location.href = "{% url 'index' %}"; // Redirige a inicio
+    };
+  </script>
+  
+  <script>
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+  
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          // Detecta si el botón que envió el formulario fue el de registrar
+          const submitter = document.activeElement;
+          const isRegistrar = submitter && submitter.name === 'registrar';
+  
+          if (isRegistrar && !form.checkValidity()) {
+            event.preventDefault(); // Bloquea solo si hay errores
+            event.stopPropagation();
+          }
+  
+          // Siempre aplica estilos de validación
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+  </script>
+  
+  
+</body>
+</html>

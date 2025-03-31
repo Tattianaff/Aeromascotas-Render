@@ -1,0 +1,152 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio Sesión</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/color-modes.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  </head>
+<style>
+  body {
+  padding: 0;
+  height: 100%;
+  background-color: #f3f0ff;
+  }
+</style>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+      <div class="px-3 py-2 fondo border-bottom">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+              <img src="{% static 'img/logo.png' %}" alt="AeroMascotas" width="auto" height="70">
+              <h1 class="titulo">AeroMascotas</h1>
+            </a>
+            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+                <li>
+                  <a href="{% url 'index' %}" class="nav-link text-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="bi bi-house bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor"  viewBox="0 0 16 16">
+                      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                    </svg>
+                    Home
+                  </a>
+                </li>
+            </ul>
+          </div>
+        </div> 
+      </div>
+  </header>     
+  <main class="d-flex justify-content-center align-items-center flex-fill" style="min-height: 100vh;">
+    <div class="bg-white shadow p-5 rounded-4 fuenteletra d-flex flex-column flex-md-row align-items-center gap-4" style="width: 85%; max-width: 1000px;">
+  
+      <!-- Imagen decorativa (lado izquierdo en desktop) -->
+      <div class="text-center d-none d-md-block">
+        <img src="{% static '/img/inicio_sesion.jpg'%}" alt="Inicio Sesión" width="200" style="max-height: 200px;">
+      </div>
+  
+      <!-- Formulario -->
+      <div class="flex-fill" style="min-width: 280px;">
+        <form method="post" action="{% url 'inicio_sesion' %}">
+          {% csrf_token %}
+  
+          <div class="text-center mb-4">
+            <h2 class="fw-bold fuenteletra">Iniciar Sesión</h2>
+          </div>
+  
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="InputEmail" name="correo" placeholder="name@example.com" required>
+            <label for="InputEmail">Email o Usuario</label>
+          </div>
+  
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="InputPassword" name="contraseña" placeholder="Password" required>
+            <label for="InputPassword">Contraseña</label>
+          </div>
+  
+          <a href="{% url 'solicitar_recuperacion' %}" class="d-block mb-3 text-decoration-none">¿Olvidaste tu contraseña?</a>
+  
+          <button type="submit" class="btn btn-bd-primary w-100 py-2">Iniciar Sesión</button>
+  
+          <p class="mt-5 mb-3 text-body-secondary text-center">&copy; AeroMascotas</p>
+        </form>
+      </div>
+    </div>
+  </main>
+  
+  <footer class="fondo mt-auto py-3"> 
+      <div  style="width: 90%; margin: 0 auto;">
+    
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-2 border-bottom fw-light">
+            <p class="text-dark nav m-0">&copy; 2025 AeroMascotas</p>
+            <ul class="list-unstyled d-flex">
+              <li class="ms-3">
+                <a href="https://www.instagram.com/aero_mascotas?igsh=YnhvMm1neXVid3hp" class="nav-link link-body-emphasis">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+                  </svg></a>
+              </li>
+              <li>
+                <a href="https://x.com/Aero_Mascotas?t=YrEF1_AUSHbKZbX6KgOKSA&s=09" class="nav-link link-body-emphasis">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                  </svg></a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=61556259195231&mibextid=ZbWKwL" class="nav-link link-body-emphasis">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                  </svg></a>
+              </li>
+            </ul>
+          </div>
+          <br>
+          
+          <div class="row justify-content-md-end align-items-start mt-3">
+            <div class="col-6 col-md-3 mb-2"> <!-- mb-3 → mb-2 -->
+              <h5 class="fw-bold text-dark nav fuente-letra">Redes</h5>
+              <ul class="nav flex-column text-start">
+                <li class="nav-item mb-2">
+                  <a href="#" class="nav-link p-0 text-dark"><i class="bi bi-envelope-fill me-2"></i>Aeromascotas@gmail.com</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="https://www.instagram.com/aero_mascotas" class="nav-link p-0 text-dark"><i class="bi bi-instagram me-2"></i>IG: aero_mascotas</a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="https://x.com/Aero_Mascotas" class="nav-link p-0 text-dark">
+                    <!-- SVG de X en lista -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="me-2" viewBox="0 0 16 16" style="vertical-align: middle;">
+                      <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                    X: Aero_Mascotas
+                  </a>
+                </li>
+                <li class="nav-item mb-2">
+                  <a href="https://www.facebook.com/profile.php?id=61556259195231" class="nav-link p-0 text-dark"><i class="bi bi-facebook me-2"></i>F: Aero Mascotas</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+  </footer>
+  <script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    // Bloquear retroceso en el historial
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+        window.history.pushState(null, "", window.location.href);
+        window.location.href = "{% url 'index' %}"; // 🔹 Redirige siempre a inicio de sesión 
+    };
+  </script>
+</body>
+</html>

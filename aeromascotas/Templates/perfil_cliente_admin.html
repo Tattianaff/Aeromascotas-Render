@@ -1,0 +1,252 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfiles</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="{% static 'js/color-modes.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f3f0ff;
+  }
+  main {
+    flex: 1 0 auto; 
+  }
+  footer {
+    flex-shrink: 0;
+  }
+  .avatar {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    margin: 0 auto 20px; /* Centrarla */
+    position: relative; /* Asegura que no se desplace */
+    overflow: hidden; /* Recorta la imagen si es más grande */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorta y ajusta la imagen sin deformarla */
+    border-radius: 50%;
+}
+
+</style>
+<body>
+  <header>
+    <div class="px-3 py-2 fondo border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <!-- logo del proyecto -->
+            <img src="{% static 'img/logo.png' %}" alt="AeroMascotas" width="auto" height="70">
+            <h1 class="titulo">AeroMascotas</h1>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small nav-tabs">
+
+            <li>
+              <a href="{% url 'index_administrador' %}" class="nav-link text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                </svg>
+                Home
+              </a>
+            </li>
+
+            <li>
+              <li class="nav-item dropdown">
+                <a class="nav-link text-black negrilla" data-bs-toggle="dropdown"  role="button" aria-expanded="false" >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="" class="bi bi-x-diamond" viewBox="0 0 16 16">
+                        <path d="M7.987 16a1.53 1.53 0 0 1-1.07-.448L.45 9.082a1.53 1.53 0 0 1 0-2.165L6.917.45a1.53 1.53 0 0 1 2.166 0l6.469 6.468A1.53 1.53 0 0 1 16 8.013a1.53 1.53 0 0 1-.448 1.07l-6.47 6.469A1.53 1.53 0 0 1 7.988 16zM7.639 1.17 4.766 4.044 8 7.278l3.234-3.234L8.361 1.17a.51.51 0 0 0-.722 0M8.722 8l3.234 3.234 2.873-2.873c.2-.2.2-.523 0-.722l-2.873-2.873zM8 8.722l-3.234 3.234 2.873 2.873c.2.2.523.2.722 0l2.873-2.873zM7.278 8 4.044 4.766 1.17 7.639a.51.51 0 0 0 0 .722l2.874 2.873z"/>
+                  </svg>
+                  Menu
+                </a>
+                  <ul class="dropdown-menu fondo">
+                    <li><a class="dropdown-item negrilla" href="{% url 'ver_clientes' %}">Gestion Cuentas</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'modificar_politicas' %}">Modificar Politicas</a></li>
+                  </ul>  
+              </li>
+            </li>
+
+            <li>
+              <li class="nav-item dropdown">
+                <a class="nav-link text-black negrilla" data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-grid-1x2" viewBox="0 0 16 16">
+                    <path d="M6 1H1v14h5zm9 0h-5v5h5zm0 9v5h-5v-5zM0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm1 8a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1z"/>
+                  </svg>
+                  Servicios
+                </a>
+                  <ul class="dropdown-menu fondo">
+                    <li><a class="dropdown-item negrilla" href="{% url 'lista_solicitudes' %}">Gestion Servicios</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'tarifas_administrador' %}">Modificar Servicio</a></li>                  </ul>
+              </li>
+            </li>
+ 
+            <li>
+              <a href="https://wa.me/573195850772" class="nav-link text-black negrilla">
+                <svg xmlns="http://www.w3.org/2000/svg"  class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-info-lg" viewBox="0 0 16 16">
+                  <path d="m9.708 6.075-3.024.379-.108.502.595.108c.387.093.464.232.38.619l-.975 4.577c-.255 1.183.14 1.74 1.067 1.74.72 0 1.554-.332 1.933-.789l.116-.549c-.263.232-.65.325-.905.325-.363 0-.494-.255-.402-.704zm.091-2.755a1.32 1.32 0 1 1-2.64 0 1.32 1.32 0 0 1 2.64 0"/>
+                </svg>
+                Ayuda
+              </a>
+            </li>
+              
+            <li>
+              <li class="nav-item dropdown ">
+                <a class=" text-decoration-none nav-link text-black negrilla" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="auto" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                  </svg>
+                    Administrador
+                </a>
+                  <ul class="dropdown-menu fondo">
+                    <li><a class="dropdown-item negrilla" href="{% url 'perfil_administrador' %}">Perfil</a></li>
+                    <li><a class="dropdown-item negrilla" href="{% url 'cerrar_sesion' %}">Salir</a></li>
+                  </ul>
+              </li>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- perfil de usuario -->
+    <div>
+      <section class="seccion-perfil-usuario pb-3">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar avatar">
+                    {% if cliente.foto_perfil %}
+                        <img src="{{ cliente.foto_perfil.url }}" alt="Foto de {{ cliente.nombres }}" >
+                    {% else %}
+                        <img  src="{% get_media_prefix %}clientes/foto_cliente.png" alt="Sin imagen" >
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo fuenteletra">{{ cliente.nombres }} {{ cliente.apellidos }}</h3>  
+            </div>
+            <div class="perfil-usuario-footer fuenteletra">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-signs"></i> {{ cliente.direccion }}</li>
+                    <li><i class="icono fas fa-phone-alt"></i> {{ cliente.telefono }}</li>
+                     <li>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="icono bi bi-envelope-fill" viewBox="0 0 16 16"> 
+                      <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z"/>
+                    </svg> {{ cliente.correo }}</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-marker-alt"></i> {{ cliente.nacionalidad.nombre_pais }}</li>
+                    <li><i class="icono fas fa-calendar-alt"></i> {{ cliente.fecha_nacimiento|date:"d/m/Y" }}</li>
+                    <li><i class="icono fas fa-user-check"></i> {{ cliente.tipo_documento }}: {{ cliente.n_documento }}</li>
+                </ul>
+            
+                <div class="container d-flex flex-wrap justify-content-center">
+                    <div class="text-end align-items-center">
+                      <a class="btn btn-bd-primary" href="{% url 'editar_cliente_admin' cliente.id %}">Editar</a>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+            
+      </section>
+    </div>
+</main>
+
+<footer class="fondo mt-auto py-2" style="margin-top: 3rem;">
+  <div style="width: 90%; margin: 0 auto;">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-2 border-bottom fw-light">
+      <p class="text-dark nav m-0">&copy; 2025 AeroMascotas</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a href="https://www.instagram.com/aero_mascotas?igsh=YnhvMm1neXVid3hp" class="nav-link link-body-emphasis">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+            </svg></a>
+        </li>
+        <li>
+          <a href="https://x.com/Aero_Mascotas?t=YrEF1_AUSHbKZbX6KgOKSA&s=09" class="nav-link link-body-emphasis">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+            </svg></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/profile.php?id=61556259195231&mibextid=ZbWKwL" class="nav-link link-body-emphasis">
+            <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+              <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+            </svg></a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <div class="row justify-content-md-end align-items-start mt-3">
+      <div class="col-6 col-md-3 mb-2"> 
+        <h5 class="fw-bold text-dark nav fuente-letra">Redes</h5>
+        <ul class="nav flex-column text-start">
+          <li class="nav-item mb-2">
+            <a href="#" class="nav-link p-0 text-dark"><i class="bi bi-envelope-fill me-2"></i>Aeromascotas@gmail.com</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="https://www.instagram.com/aero_mascotas" class="nav-link p-0 text-dark"><i class="bi bi-instagram me-2"></i>IG: aero_mascotas</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="https://x.com/Aero_Mascotas" class="nav-link p-0 text-dark">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="me-2" viewBox="0 0 16 16" style="vertical-align: middle;">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+              </svg>
+              X: Aero_Mascotas
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="https://www.facebook.com/profile.php?id=61556259195231" class="nav-link p-0 text-dark"><i class="bi bi-facebook me-2"></i>F: Aero Mascotas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+</footer>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        // Bloquear retroceso en el historial
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, "", window.location.href);
+            window.location.href = "{% url 'index' %}"; // 🔹 Redirige siempre a inicio de sesión 
+        };
+       </script>
+</body>
+</html>

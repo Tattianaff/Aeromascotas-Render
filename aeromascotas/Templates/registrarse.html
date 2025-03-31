@@ -1,0 +1,344 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/color-modes.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    
+  </head>
+<style>
+  body {
+  padding: 0;
+  height: 100%;
+  background-color: #f3f0ff;
+  }
+</style>
+<body>
+  <header>
+    <div class="px-3 py-2 fondo border-bottom">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <!-- logo del proyecto -->
+            <img src="{% static 'img/logo.png' %}" alt="AeroMascotas" width="70" height="70">
+            <h1 class="titulo">AeroMascotas</h1>
+          </a>
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li>
+              <a href="{% url 'index' %}" class="nav-link text-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="bi d-block mx-auto mb-1" width="25" height="25" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                </svg>
+                Home
+              </a>
+            </li>
+            <li>
+              <div class="px-1 py-2  ">
+                <div class="container d-flex flex-wrap justify-content-center ">
+                  <div class="text-end align-items-center">
+                    <button type="button" class="btn btn-light text-dark me-2"><a href="{% url 'inicio_sesion' %}" class="navblack">Iniciar Sesión</a></button>
+                  </div>
+                </div>
+              </div>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main >
+    <div class="container d-flex justify-content-center align-items-center py-5 " style="min-height: 100vh; width: 100%;">
+      <div class="bg-white shadow p-5 rounded-4" style="width: 100%; max-width: 900px;">
+        
+        <!-- Logo y título -->
+        <div class="text-center mb-4">
+          <img src="{% static 'img/logo.png' %}" alt="Logo" width="70" height="65" class="mb-3">
+          <h2 class="fuenteletra">¡Regístrate!</h2>
+        </div>
+  
+        <!-- Formulario -->
+        <form method="POST" action="{% url 'agregar_cliente' %}" class="fuenteletra needs-validation" novalidate>
+          {% csrf_token %}
+          {% if messages %}
+            <div id="django-errors" style="display: none;">
+              {% for message in messages %}
+                {% if message.level == 40 %}
+                  <p class="django-error-message">{{ message }}</p>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div id="django-success" style="display: none;">
+              {% for message in messages %}
+                {% if message.level == 25 %}
+                  <p class="django-success-message">{{ message }}</p>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" pattern="[a-zA-Z ]*" required>
+                        <div class="invalid-feedback">
+                            Es necesario que escriba sus apellidos.
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="nombres" name="nombres" pattern="[a-zA-Z ]*" required>
+                        <div class="invalid-feedback">
+                            Es necesario que escriba sus nombres.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="n_documento" class="form-label">Número de Identificación</label>
+                        <input type="number" class="form-control" id="n_documento" name="n_documento" placeholder="1049611..." min="9999999" max="9999999999" required>
+                        <div class="invalid-feedback">
+                            Es necesario que escriba el número de identificación.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tipo_documento" class="form-label">Tipo de Identificación</label>
+                        <select class="form-select" id="tipo_documento" name="tipo_documento" required>
+                            <option value="">Seleccione</option>
+                            <option value="CC">Cédula de Ciudadanía</option>
+                            <option value="CE">Pasaporte</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Es necesario que ingrese su tipo de identificación.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required max="">
+                        <div class="invalid-feedback">
+                            Es necesario que seleccione su fecha de nacimiento.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="telefono" class="form-label">Número Telefónico</label>
+                        <input type="number" class="form-control" id="telefono" name="telefono" placeholder="31145457..." min="999999999" max="999999999999" required>
+                        <div class="invalid-feedback">
+                            Es necesario que escriba su número de teléfono.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="nacionalidad" class="form-label">Nacionalidad</label>
+                        <select class="form-select" id="nacionalidad" name="nacionalidad" required>
+                            <option value="">Seleccione</option>
+                            {% for nacionalidad in nacionalidades %}
+                                <option value="{{ nacionalidad.id }}">{{ nacionalidad.nombre_pais }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                            Es necesario que ingrese su nacionalidad.
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Calle 123 #..." required>
+                        <div class="invalid-feedback">
+                            Es necesario que ingrese su dirección.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="correo" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="correo" name="correo" placeholder="you@example.com" required>
+                        <div class="invalid-feedback">
+                            Es necesario que ingrese su email.
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <label for="contraseña" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+                        <div class="invalid-feedback">
+                            Es necesario que ingrese una contraseña.
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="politicas" required>
+                      <label class="form-check-label" for="politicas">
+                          He leído y acepto las <a href="#" data-bs-toggle="modal" data-bs-target="#modalPoliticas">políticas</a>
+                      </label>
+                      <div class="invalid-feedback">
+                          Debe aceptar las políticas.
+                      </div>
+                    </div>
+                                     
+                    <hr class="my-4">
+                    <button class="w-100 btn btn-bd-primary btn-lg" type="submit" href="{% url 'inicio_sesion' %}" >Registrarse</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </main>
+  <footer class="fondo mt-auto py-2">
+    <div style="width: 90%; margin: 0 auto;">
+      <div class="d-flex flex-column flex-sm-row justify-content-between py-2 border-bottom fw-light">
+        <p class="text-dark nav m-0">&copy; 2025 AeroMascotas</p>
+        <ul class="list-unstyled d-flex">
+          <li class="ms-3">
+            <a href="https://www.instagram.com/aero_mascotas?igsh=YnhvMm1neXVid3hp" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://x.com/Aero_Mascotas?t=YrEF1_AUSHbKZbX6KgOKSA&s=09" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+              </svg></a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/profile.php?id=61556259195231&mibextid=ZbWKwL" class="nav-link link-body-emphasis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg></a>
+          </li>
+        </ul>
+      </div>
+      <br>
+      <div class="row justify-content-md-end align-items-start mt-3">
+        <div class="col-6 col-md-3 mb-2"> 
+          <h5 class="fw-bold text-dark nav fuente-letra">Redes</h5>
+          <ul class="nav flex-column text-start">
+            <li class="nav-item mb-2">
+              <a href="#" class="nav-link p-0 text-dark"><i class="bi bi-envelope-fill me-2"></i>Aeromascotas@gmail.com</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://www.instagram.com/aero_mascotas" class="nav-link p-0 text-dark"><i class="bi bi-instagram me-2"></i>IG: aero_mascotas</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://x.com/Aero_Mascotas" class="nav-link p-0 text-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="me-2" viewBox="0 0 16 16" style="vertical-align: middle;">
+                  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                </svg>
+                X: Aero_Mascotas
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a href="https://www.facebook.com/profile.php?id=61556259195231" class="nav-link p-0 text-dark"><i class="bi bi-facebook me-2"></i>F: Aero Mascotas</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  </footer>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector('form');
+      const fechaNacimientoInput = document.getElementById("fecha_nacimiento");
+      const errors = document.querySelectorAll('.django-error-message');
+      const successes = document.querySelectorAll('.django-success-message');
+  
+      // 👉 Establecer la fecha máxima (mayor de 18 años)
+      if (fechaNacimientoInput) {
+        const today = new Date();
+        today.setFullYear(today.getFullYear() - 18);
+        const maxDate = today.toISOString().split("T")[0];
+        fechaNacimientoInput.max = maxDate;
+      }
+  
+      // ✅ Mostrar mensajes solo si el formulario fue enviado
+      const fueEnviado = sessionStorage.getItem("formulario_enviado");
+  
+      if (errors.length > 0 && fueEnviado) {
+        let errorMsg = '';
+        errors.forEach(err => errorMsg += `• ${err.innerText}\n`);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error en el registro',
+          html: `<pre style="text-align: left;">${errorMsg}</pre>`,
+          confirmButtonText: 'Revisar'
+        });
+        sessionStorage.removeItem("formulario_enviado");
+      }
+  
+      if (successes.length > 0 && errors.length === 0 && fueEnviado) {
+        let successMsg = '';
+        successes.forEach(msg => successMsg += `${msg.innerText}\n`);
+        Swal.fire({
+          icon: 'success',
+          title: 'Registro exitoso',
+          html: `<pre style="text-align: left;">${successMsg}</pre>`,
+          confirmButtonText: '¡Genial!'
+        });
+        sessionStorage.removeItem("formulario_enviado");
+      }
+  
+      // ✅ Validación del formulario y prevención de envíos incompletos
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+  
+        if (!form.checkValidity()) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Formulario incompleto',
+            text: 'Por favor, completa todos los campos correctamente.',
+            confirmButtonText: 'Entendido'
+          });
+          form.classList.add('was-validated');
+          return;
+        }
+  
+        // Marca que el formulario fue enviado correctamente
+        sessionStorage.setItem("formulario_enviado", "true");
+  
+        // Desactiva el botón mientras se envía
+        const btn = form.querySelector("button[type='submit']");
+        btn.disabled = true;
+        btn.innerHTML = 'Enviando... <span class="spinner-border spinner-border-sm"></span>';
+  
+        form.classList.add('was-validated');
+        form.submit();
+      });
+    });
+  </script>
+  
+
+  <!-- Modal de Políticas -->
+    <div class="modal fade" id="modalPoliticas" tabindex="-1" aria-labelledby="modalPoliticasLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header fondo text-white">
+            <h5 class="modal-title fuenteletra" id="modalPoliticasLabel">Políticas de AeroMascotas</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body text-start fuenteletra">
+            <p><strong>1. Confidencialidad de Datos:</strong> La información personal de nuestros clientes se maneja con estricta confidencialidad. Cumplimos con las leyes de protección de datos y solo compartimos información cuando es estrictamente necesario para el servicio.</p>
+            <p><strong>2. Uso del Servicio:</strong> AeroMascotas facilita la gestión de documentos y requisitos para el transporte de mascotas en aerolíneas. Es responsabilidad del cliente proporcionar información verídica y completa.</p>
+            <p><strong>3. Requisitos Sanitarios:</strong> Nos aseguramos de que las mascotas cumplan con los certificados de salud, vacunación y condiciones de apoyo emocional exigidos por cada aerolínea.</p>
+            <p><strong>4. Seguridad:</strong> Nuestra plataforma cuenta con medidas de seguridad para prevenir accesos no autorizados. Realizamos respaldos periódicos y protegemos toda transacción sensible.</p>
+            <p><strong>5. Disponibilidad:</strong> El sistema está disponible las 24 horas, salvo por mantenimientos programados. Buscamos garantizar el mejor rendimiento en diferentes dispositivos.</p>
+            <p><strong>6. Políticas de Cancelación:</strong> El cliente podrá cancelar o modificar sus solicitudes siempre y cuando no se hayan tramitado completamente. Algunas tarifas podrían no ser reembolsables.</p>
+            <p><strong>7. Soporte:</strong> Contamos con canales para responder PQR (Preguntas, Quejas o Reclamos), y nuestro equipo de soporte está disponible en horarios establecidos.</p>
+            <p><strong>8. Aceptación:</strong> Al registrarse, el cliente declara que ha leído y acepta estas políticas en su totalidad.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-bd-primary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
