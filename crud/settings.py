@@ -94,7 +94,7 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '14364'),
     }
 }
-
+# Este cambio es solo para forzar el deploy
 
 AUTH_PASSWORD_VALIDATORS = [
     {
