@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'crud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME', 'aeromascotas'),
-        'USER': os.environ.get('DB_USER', 'root'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', '1234567890'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
         'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
@@ -129,3 +129,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'aeromascotasjml@gmail.com'  
 EMAIL_HOST_PASSWORD = 'pbenbvrrgqvwpkzl'  
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+import sys
+print("DB_HOST desde settings.py:", os.environ.get('DB_HOST'), file=sys.stderr)
