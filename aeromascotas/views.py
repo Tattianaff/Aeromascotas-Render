@@ -516,7 +516,7 @@ def lista_servicios(request):
 @never_cache
 def tarifas(request):
     servicios = Servicio.objects.all()  
-    return render(request, 'tarifas.html', {'servicios': servicios})
+    return render(request, 'Tarifas.html', {'servicios': servicios})
 
 @never_cache
 def tarifas_administrador(request):
