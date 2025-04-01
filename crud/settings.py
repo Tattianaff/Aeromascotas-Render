@@ -5,6 +5,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 
 DEBUG = 'RENDER' not in os.environ  # Cambia esto a False en producción
+# debug temporal
 
 if not DEBUG: # type: ignore
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
