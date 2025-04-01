@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_URL = '/static/'
 
-DEBUG = 'RENDER' not in os.environ  # Cambia esto a False en producción
+DEBUG = True
 # debug temporal
 
 if not DEBUG: # type: ignore
@@ -24,7 +24,7 @@ LOGIN_URL = '/inicio_sesion/'
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default ='jasdlkjskldjsladsl')  # Cambia esto por una clave secreta segura en producción
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
